@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using OlimpaSolution.models;
 
 namespace OlimpaSolution
 {
@@ -6,6 +7,7 @@ namespace OlimpaSolution
     {
         public MainWindow()
         {
+            Content = new ParentControl();
             InitializeComponent();
         }
     }
