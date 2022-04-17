@@ -11,6 +11,8 @@ public partial class DataControl : UserControl
 {
     private readonly Image _mapImage;
     private readonly Grid _gridDiagrams;
+    private readonly TextBox _a;
+    private readonly TextBox _b;
     private static readonly string SourcePath = App.Path + "images/";
     public DataControl()
     {
@@ -18,6 +20,8 @@ public partial class DataControl : UserControl
         InitializeComponent();
         _gridDiagrams = this.Find<Grid>("GridListBox");
         _mapImage = this.Find<Image>("MapImage");
+        _a = this.Find<TextBox>("A");
+        _b = this.Find<TextBox>("B");
 
     }
 
@@ -38,6 +42,13 @@ public partial class DataControl : UserControl
                 Grid.SetColumn(img, i++);
             }
         }
+    }
+
+    public ((int, int), (int, int)) GetCoordinates()
+    {
+        var text1 = _a.Text.Split(' ');
+        var text2 = _b.Text.Split(' ');
+        return ((int.Parse(text1[0]), int.Parse(text1[1])), (int.Parse(text2[0]), int.Parse(text2[1])));
     }
     private void InitializeComponent()
     {

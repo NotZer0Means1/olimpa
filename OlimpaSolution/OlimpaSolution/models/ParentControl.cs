@@ -6,6 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using ExtremelySimpleLogger;
+using Newtonsoft.Json;
 using OlimpaSolution.services;
 
 namespace OlimpaSolution.models;
@@ -20,6 +21,18 @@ public partial class ParentControl : UserControl
         InitializeComponent();
         _dataControl = this.Find<DataControl>("DataControl");
     }
+
+    private async void GG(object? sender, RoutedEventArgs args)
+    {
+        var coord = _dataControl.GetCoordinates();
+        await File.WriteAllTextAsync(NetworkService.DataPath + "example.json",
+            await File.ReadAllTextAsync(NetworkService.DataPath + "example.json") +
+            JsonConvert.SerializeObject(new {A = coord.Item1, B = coord.Item2}));
+        
+        await RunScript(ScriptPath);
+        _dataControl.LoadDiagrams();
+        _dataControl.LoadMapImage();
+    } 
 
     private async Task<bool> RunScript(string script)
     {

@@ -15,7 +15,7 @@ public static class NetworkService
 {
     private static HttpClient _httpClient = new HttpClient();
     private const string ServerUri = "https://dt.miet.ru/ppo_it_final";
-    private static readonly string DataPath = App.Path + "tmp/";
+    public static readonly string DataPath = App.Path + "tmp/";
     private const string Token = "daqazfdo";
 
     static NetworkService()
@@ -41,7 +41,7 @@ public static class NetworkService
 
         if (!Directory.Exists(DataPath)) Directory.CreateDirectory(DataPath);
         App.Logger.Log(LogLevel.Info, "message is received, writing it...");
-        await File.WriteAllTextAsync(DataPath + "response.json", await response.Content.ReadAsStringAsync());
+        await File.WriteAllTextAsync(DataPath + "example.json", await response.Content.ReadAsStringAsync());
 
         return true;
     }

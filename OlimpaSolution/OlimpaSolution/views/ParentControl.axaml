@@ -29,7 +29,7 @@
                                         Get data from server
                                 </TextBlock>
                         </Button>
-                        <Button x:Name="RedrawButton">redraw</Button>
+                        <Button x:Name="RedrawButton" Click="GG">redraw</Button>
                 </StackPanel>
         </Grid>
         

@@ -16,7 +16,10 @@
                         </Grid.ColumnDefinitions>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="DataEnter" Header="User input"></TabItem>
+                <TabItem x:Name="DataEnter" Header="User input">
+                    <DockPanel><TextBox x:Name="A"></TextBox>
+                        <TextBox x:Name="B"></TextBox></DockPanel>
+                </TabItem>
             </TabControl>       
 
 </UserControl>
