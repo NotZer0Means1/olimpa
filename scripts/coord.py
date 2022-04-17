@@ -10,7 +10,6 @@ def draw_circle(x, y, r):
         draw = ImageDraw.Draw(im)
 
         for x0, y0, r0 in zip(x, y, r):
-            r0 =
             x0, y0, r0 = x0 * STEP, y0 * STEP, r0 * STEP
             draw.ellipse((x0 - r0, y0 - r0, x0 + r0, y0 + r0), outline=(255, 0, 0))
 
