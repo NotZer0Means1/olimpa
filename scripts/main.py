@@ -23,12 +23,6 @@ def get_anomalies(items: List[Item]):
     return anoms
 
 
-def draw_img():
-    with open('images/map.png') as img:
-        pass
-    pass
-
-
 def parse_json_item(item: dict):
     x, y = item['coords']
     id_ = item['id']
