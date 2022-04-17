@@ -11,9 +11,12 @@ def draw_diagram(swans):
             ids.append(i)
             rates.append(r)
 
-        plt.pie(rates, labels=ids, autopct='%0.1f%%', pctdistance=0.7, rotatelabels=True, shadow=False,
+        ids = ['%s, %1.1f%%' % (l, s) for l, s in zip(ids, rates)]
+
+        plt.pie(rates, rotatelabels=True, shadow=False,
                 startangle=90)
         plt.axis('equal')
+        plt.legend(loc='lower left', labels=ids)
         plt.savefig(f"images/diag{counter}.png")
         plt.close()
 
