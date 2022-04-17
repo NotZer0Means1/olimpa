@@ -1,16 +1,38 @@
-def get_image():
+from collections import namedtuple
+import json
+
+
+Item = namedtuple('Item', ['x', 'y', 'id_', 'swans'])
+Swan = namedtuple('Swan', ['id_', 'rate'])
+
+
+def get_center():
+    pass
+
+
+def draw_img():
     with open('images/map.png') as img:
         pass
     pass
 
 
+def parse_json_item(item: dict):
+    x, y = item['coords']
+    id_ = item['id']
+    swans = [Swan(*swan.values()) for swan in item['swans']]
+    item = Item(x, y, id_, swans)
+    return item
+
+
 def parse_json():
-    with open() as file:
-        pass
+    with open('tmp/example.json') as file:
+        message = json.load(file)['message']
+    items = [Item(*parse_json_item(item)) for item in message]
+    return items
 
 
 def run():
-    pass
+    print(*parse_json(), sep='\n')
 
 
 if __name__ == '__main__':
