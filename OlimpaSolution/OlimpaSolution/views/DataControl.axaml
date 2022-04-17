@@ -3,8 +3,12 @@
              x:Class="OlimpaSolution.models.DataControl">
         
             <TabControl>
-                <TabItem x:Name="Map" Header="Map"></TabItem>
-                <TabItem x:Name="Diagrams" Header="Diagrams"></TabItem>
+                <TabItem Header="Map">
+                    <Image x:Name="MapImage"></Image>
+                </TabItem>
+                <TabItem Header="Diagrams">
+                    <ListBox x:Name="DiagramsListBox"></ListBox>
+                </TabItem>
                 <TabItem x:Name="DataEnter" Header="User input"></TabItem>
             </TabControl>       
 
