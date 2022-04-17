@@ -1,3 +1,4 @@
+from typing import List
 from collections import namedtuple
 import json
 
@@ -31,8 +32,14 @@ def parse_json():
     return items
 
 
+def get_swans(items: List[Item]):
+    swans = [item.swans for item in items]
+    return swans
+
+
 def run():
-    print(*parse_json(), sep='\n')
+    items = parse_json()
+    print(get_swans(items))
 
 
 if __name__ == '__main__':
