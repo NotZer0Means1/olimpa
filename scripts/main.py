@@ -3,19 +3,11 @@ from collections import namedtuple
 from diagram_drawer import draw_diagram
 import json
 
-
-
 Item = namedtuple('Item', ['x', 'y', 'id_', 'swans'])
 Swan = namedtuple('Swan', ['id_', 'rate'])
 
 
 def get_center():
-    pass
-
-
-def draw_img():
-    with open('images/map.png') as img:
-        pass
     pass
 
 
@@ -37,6 +29,7 @@ def parse_json():
 def get_swans(items: List[Item]):
     swans = [item.swans for item in items]
     return swans
+
 
 def run():
     items = parse_json()
