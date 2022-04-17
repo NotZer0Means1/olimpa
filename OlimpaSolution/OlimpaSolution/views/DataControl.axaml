@@ -2,12 +2,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="OlimpaSolution.models.DataControl">
         
-            <TabControl>
+            <TabControl x:Name="TabControl">
                 <TabItem Header="Map">
                     <Image x:Name="MapImage"></Image>
                 </TabItem>
                 <TabItem Header="Diagrams">
-                    <ListBox x:Name="DiagramsListBox"></ListBox>
+                    <Grid x:Name="GridListBox">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
                 </TabItem>
                 <TabItem x:Name="DataEnter" Header="User input"></TabItem>
             </TabControl>       

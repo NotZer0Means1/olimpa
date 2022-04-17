@@ -14,10 +14,11 @@ public partial class ParentControl : UserControl
 {
     private static bool _proccessOnline = false;
     public static readonly string ScriptPath = App.Path + "script.sh";
+    private readonly DataControl _dataControl;
     public ParentControl()
     {
-        
         InitializeComponent();
+        _dataControl = this.Find<DataControl>("DataControl");
     }
 
     private async Task<bool> RunScript(string script)
@@ -45,6 +46,9 @@ public partial class ParentControl : UserControl
             var res = await NetworkService.GetSensorsData();
             if (!res) App.Logger.Log(LogLevel.Error, "request failed");
             await RunScript(ScriptPath);
+            _dataControl.LoadDiagrams();
+            _dataControl.LoadMapImage();
+            
             _proccessOnline = false;
         }
     }

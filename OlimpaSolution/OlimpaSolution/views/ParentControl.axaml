@@ -22,7 +22,7 @@
                         <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 
-                <models:DataControl Grid.Row="0"></models:DataControl>
+                <models:DataControl Grid.Row="0" x:Name="DataControl"></models:DataControl>
                 <StackPanel Orientation="Horizontal" Grid.Row="1">
                         <Button x:Name="GetDataButton" Click="Call">
                                 <TextBlock TextAlignment="Center">
