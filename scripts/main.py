@@ -1,6 +1,8 @@
 from typing import List
 from collections import namedtuple
+from diagram_drawer import draw_diagram
 import json
+
 
 
 Item = namedtuple('Item', ['x', 'y', 'id_', 'swans'])
@@ -36,10 +38,10 @@ def get_swans(items: List[Item]):
     swans = [item.swans for item in items]
     return swans
 
-
 def run():
     items = parse_json()
-    print(get_swans(items))
+    swans = get_swans(items)
+    draw_diagram(swans)
 
 
 if __name__ == '__main__':
