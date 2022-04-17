@@ -9,35 +9,35 @@ namespace OlimpaSolution.models;
 
 public partial class DataControl : UserControl
 {
-    private Image MapImage;
-    private ListBox DiagramsListBox;
-    private static readonly string SourcePath = App.Path + "source/";
+    private readonly Image _mapImage;
+    private readonly Grid _gridDiagrams;
+    private static readonly string SourcePath = App.Path + "images/";
     public DataControl()
     {
-        MapImage = this.Find<Image>("MapImage");
-        DiagramsListBox = this.Find<ListBox>("DiagramsListBox");
-
+        
         InitializeComponent();
+        _gridDiagrams = this.Find<Grid>("GridListBox");
+        _mapImage = this.Find<Image>("MapImage");
+
     }
 
     public void LoadMapImage()
     {
-        MapImage.Source = new Bitmap(SourcePath + "map.png");
+        _mapImage.Source = new Bitmap(SourcePath + "map.png");
     }
 
     public void LoadDiagrams()
     {
-        List<Image> diagrams = new List<Image>();
+        int i = 0;
         foreach (var filename in Directory.GetFiles(SourcePath))
         {
-            if (!filename.Equals("map.png"))
-                diagrams.Add(new Image() {Source = new Bitmap(SourcePath + filename)});
-            
+            if (!filename.Equals(SourcePath + "map.png"))
+            {
+                var img = new Image() {Source = new Bitmap(filename) };
+                _gridDiagrams.Children.Add(img);
+                Grid.SetColumn(img, i++);
+            }
         }
-
-        var newCollection = DiagramsListBox.Items.Cast<Image>().ToList();
-        newCollection.AddRange(diagrams);
-        DiagramsListBox.Items = newCollection;
     }
     private void InitializeComponent()
     {
